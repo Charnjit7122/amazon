@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useState } from "react";
-import { StarIcon } from "@heroicons/react/outline";
+// import { StarIcon } from "@heroicons/react/outline";
 import Currency from "react-currency-formatter";
 
 const MAX_RATING = 5;
@@ -19,11 +19,11 @@ function Product({ id, title, price, description, category, image }) {
       <Image src={image} height={200} width={200} objectFit="contain" />
       <h4 className="my-3">{title}</h4>
       <div className="flex">
-        {Array(rating)
+        {/* {Array(rating)
           .fill()
           .map((_, i) => (
             <StarIcon key={i} className="h-5 w-5 text-yellow-500" />
-          ))}
+          ))} */}
       </div>
 
       <p className="text-xs my-2  line-clamp-2">{description}</p>

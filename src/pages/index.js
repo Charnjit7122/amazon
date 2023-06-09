@@ -1,8 +1,9 @@
+import Banner from "@/components/Banner";
 import UserSideTheme from "@/themes/usertheme/UserSideTheme";
 export default function Home(products) {
   return (
     <UserSideTheme>
-      <div>dsa</div>
+      <Banner />
     </UserSideTheme>
   );
 }

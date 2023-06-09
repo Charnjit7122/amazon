@@ -8,7 +8,6 @@ function Banner(){
                 autoPlay
                 infiniteLoop
                 showStatus={false}
-                showIndicators={true}
                 showThumbs={false}
                 interval={5000}
             >

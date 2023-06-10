@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useState } from "react";
-// import { StarIcon } from "@heroicons/react/outline";
+import { HiStar } from "react-icons/hi";
 import Currency from "react-currency-formatter";
 
 const MAX_RATING = 5;
@@ -16,14 +16,14 @@ function Product({ id, title, price, description, category, image }) {
       <p className="absolute top-2 right-2 text-xs italic text-gray-400 cursor-pointer">
         {category}
       </p>
-      <Image src={image} height={200} width={200} objectFit="contain" />
+      <Image className="items-center" src={image} height={200} width={200} objectFit="contain" />
       <h4 className="my-3">{title}</h4>
       <div className="flex">
-        {/* {Array(rating)
+         {Array(rating)
           .fill()
           .map((_, i) => (
-            <StarIcon key={i} className="h-5 w-5 text-yellow-500" />
-          ))} */}
+            <HiStar key={i} className="h-5 w-5 text-yellow-500" />
+          ))} 
       </div>
 
       <p className="text-xs my-2  line-clamp-2">{description}</p>
@@ -34,12 +34,12 @@ function Product({ id, title, price, description, category, image }) {
 
       {hasPrime && (
         <div className="flex items-center space-x-2 -mt-5">
-          <img className="w-12" src="/images/prime.png" alt="amazon-prime" />
+          <img className="w-12" src="/AmazonWhite.png" alt="amazon-prime" />
           <p className="text-xs text-gray-500">FREE Next-day Delivery</p>
         </div>
       )}
 
-      <button className="mt-auto button">Add TO CArt</button>
+      <button className="mt-auto button link">Add TO CArt</button>
     </div>
   );
 }

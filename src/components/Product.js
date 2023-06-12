@@ -16,7 +16,10 @@ function Product({ id, title, price, description, category, image }) {
       <p className="absolute top-2 right-2 text-xs italic text-gray-400 cursor-pointer">
         {category}
       </p>
-      <Image className="items-center" src={image} height={200} width={200} objectFit="contain" />
+      <div className="flex justify-center items-center">
+          <Image className="items-center" src={image} height={200} width={200}  objectFit="contain" />
+      </div>
+      
       <h4 className="my-3">{title}</h4>
       <div className="flex">
          {Array(rating)

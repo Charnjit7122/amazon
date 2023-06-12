@@ -47,7 +47,7 @@ export default function Footer() {
       </div>
       <div className="flex items-center justify-center my-5">
         <Image
-          src="https://links.papareact.com/f90"
+          src="/AmazonWhite.png"
           width={76}
           height={23}
           objectFit="contain"

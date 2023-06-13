@@ -14,17 +14,16 @@ export default function Header() {
     <>
       {/* Side bar */}
       <div
-        className={`${
-          active ? "" : "hidden"
-        } fixed z-50 flex w-full h-full bg-black bg-opacity-70`}
+        className={`${active ? "" : "hidden"
+          } fixed z-50 flex w-full h-full bg-black bg-opacity-70`}
       >
         <Slide left>
           <div className="overflow-y-scroll scrollbar-hide bg-white w-full md:w-[365px] h-full">
             <div
               className="bg-[#232f3e] flex items-center text-white text-xl font-bold space-x-2 capitalize py-2 px-7 sticky top-0 cursor-pointer"
             >
-                <FaUserCircle className="w-8 h-8" />
-              
+              <FaUserCircle className="w-8 h-8" />
+
               <p>Hello, Sign In
               </p>
             </div>
@@ -45,7 +44,7 @@ export default function Header() {
                 shop by department
               </h3>{" "}
               <div className="text-gray-600 text-sm flex flex-col gap-2">
-              <p class="sidebar_sub_items">Baby &amp; Kids</p>
+                <p class="sidebar_sub_items">Baby &amp; Kids</p>
                 <p class="sidebar_sub_items">Books</p>
                 <p class="sidebar_sub_items">Electronics</p>
                 <p class="sidebar_sub_items">Food Essentials</p>
@@ -119,6 +118,7 @@ export default function Header() {
               height={40}
               objectFit="contain"
               className="cursor-pointer"
+              alt="Amazon Logo"
             />
           </div>
 
@@ -130,7 +130,7 @@ export default function Header() {
               type="text"
             />
             <FaSearch className="px-4 w-12 h-12" />
-            
+
           </div>
 
           {/* right */}
@@ -147,13 +147,13 @@ export default function Header() {
                   <div className=" h-3 w-3 bg-white rotate-45 transform origin-bottom-left"></div>
                 </div>
                 <div className="w-full bg-white text-black rounded-md py-5 px-10">
-                  
-                    <button
-                      className="amazon_button flex justify-center px-10 mx-auto"
-                    >
-                      Sign In
-                    </button>
-                 
+
+                  <button
+                    className="amazon_button flex justify-center px-10 mx-auto"
+                  >
+                    Sign In
+                  </button>
+
                   <div className="mt-3 flex flex-wrap justify-around gap-x-5">
                     <div>
                       <h3 className="font-bold text-lg mb-2.5 border-gray-300 border-b">
@@ -221,8 +221,8 @@ export default function Header() {
                           Your Content and Devices
                         </p>
                         <p>
-                            SignOut
-                          </p>
+                          SignOut
+                        </p>
                       </div>
                     </div>
                   </div>

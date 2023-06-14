@@ -14,18 +14,16 @@ export default function Header() {
     <>
       {/* Side bar */}
       <div
-        className={`${active ? "" : "hidden"
-          } fixed z-50 flex w-full h-full bg-black bg-opacity-70`}
+        className={`${
+          active ? "" : "hidden"
+        } fixed z-50 flex w-full h-full bg-black bg-opacity-70`}
       >
         <Slide left>
           <div className="overflow-y-scroll scrollbar-hide bg-white w-full md:w-[365px] h-full">
-            <div
-              className="bg-[#232f3e] flex items-center text-white text-xl font-bold space-x-2 capitalize py-2 px-7 sticky top-0 cursor-pointer"
-            >
+            <div className="bg-[#232f3e] flex items-center text-white text-xl font-bold space-x-2 capitalize py-2 px-7 sticky top-0 cursor-pointer">
               <FaUserCircle className="w-8 h-8" />
 
-              <p>Hello, Sign In
-              </p>
+              <p>Hello, Sign In</p>
             </div>
 
             <div className="px-7 capitalize my-3 border-b border-gray-300 pb-5">
@@ -92,10 +90,7 @@ export default function Header() {
               <div className="text-gray-600 text-sm flex flex-col gap-2">
                 <p className="sidebar_sub_items">Your Account</p>
                 <p className="sidebar_sub_items">Customer Service</p>
-                <p
-                  className="sidebar_sub_items"
-                > sign in or sign out
-                </p>
+                <p className="sidebar_sub_items"> sign in or sign out</p>
               </div>
             </div>
           </div>
@@ -112,12 +107,11 @@ export default function Header() {
         <div className="flex items-center bg-[#131921] p-1 flex-grow py-2">
           <div className="mt-2 flex items-center flex-grow sm:flex-grow-0">
             <Image
-              onClick={() => router.push("/")}
-              src="/AmazonWhite.png"
-              width={150}
-              height={40}
+              src="/AmazonWhite.svg"
+              width={120}
+              height={35}
               objectFit="contain"
-              className="cursor-pointer"
+              className="cursor-pointer mx-5"
               alt="Amazon Logo"
             />
           </div>
@@ -130,14 +124,12 @@ export default function Header() {
               type="text"
             />
             <FaSearch className="px-4 w-12 h-12" />
-
           </div>
 
           {/* right */}
           <div className="text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap">
             <div className="link group md:inline-block">
-              <p className="capitalize">"Hello, Sign In"
-              </p>
+              <p className="capitalize">"Hello, Sign In"</p>
 
               <p className="font-extrabold md:text-sm">Account & Lists</p>
               {/* Hover Menu */}
@@ -147,10 +139,7 @@ export default function Header() {
                   <div className=" h-3 w-3 bg-white rotate-45 transform origin-bottom-left"></div>
                 </div>
                 <div className="w-full bg-white text-black rounded-md py-5 px-10">
-
-                  <button
-                    className="amazon_button flex justify-center px-10 mx-auto"
-                  >
+                  <button className="amazon_button flex justify-center px-10 mx-auto">
                     Sign In
                   </button>
 
@@ -185,9 +174,7 @@ export default function Header() {
                         <p className="hover:underline hover:text-yellow-500">
                           Your Account{" "}
                         </p>
-                        <p
-                          className="hover:underline hover:text-yellow-500"
-                        >
+                        <p className="hover:underline hover:text-yellow-500">
                           Your Orders{" "}
                         </p>
                         <p className="hover:underline hover:text-yellow-500">
@@ -220,9 +207,7 @@ export default function Header() {
                         <p className="hover:underline hover:text-yellow-500">
                           Your Content and Devices
                         </p>
-                        <p>
-                          SignOut
-                        </p>
+                        <p>SignOut</p>
                       </div>
                     </div>
                   </div>
@@ -233,9 +218,7 @@ export default function Header() {
               <p>Returns</p>
               <p className="font-extrabold md:text-sm">& orders</p>
             </div>
-            <div
-              className="link relative flex items-center cursor-pointer"
-            >
+            <div className="link relative flex items-center cursor-pointer">
               <span className="absolute top-0 right-0 md:right-7 h-4 w-4 bg-yellow-400 rounded-full text-center text-black font-bold">
                 4
               </span>
@@ -265,5 +248,4 @@ export default function Header() {
       </div>
     </>
   );
-
 }

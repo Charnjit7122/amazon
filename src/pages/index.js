@@ -1,13 +1,13 @@
 import Banner from "@/components/Banner";
-import UserSideTheme from "@/themes/usertheme/UserSideTheme";
 import ProductFeed from "@/components/ProductFeed";
-import SignIn from "@/components/Signin";
-import Register from "@/components/Register";
+import UserSideTheme from "@/themes/usertheme/UserSideTheme";
+
 export default function Home({ products }) {
   return (
-    // <UserSideTheme products={products}> </UserSideTheme> 
-    <SignIn></SignIn>
-    // <Register></Register>  
+    <UserSideTheme>
+      <Banner />
+      <ProductFeed products={products} />
+    </UserSideTheme>
   );
 }
 

@@ -2,23 +2,26 @@ import Image from "next/image";
 import { useState } from "react";
 import { HiStar } from "react-icons/hi";
 import Currency from "react-currency-formatter";
+import { useRouter } from "next/router";
 
 const MAX_RATING = 5;
 const MIN_RATING = 1;
 
 function Product({ id, title, price, description, category, image }) {
+  const router = useRouter();
   const [hasPrime] = useState(Math.random() < 0.5);
   const [rating] = useState(
     Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
   );
   return (
-    <div className="relative flex flex-col m-5 bg-white z-30 p-10 shadow-xl rounded">
+    <div className="relative flex flex-col m-5 bg-white z-30 p-10 shadow-2xl rounded">
       <p className="absolute top-2 right-2 text-xs italic text-gray-400 cursor-pointer">
         {category}
       </p>
 
       <div>
         <img
+          onClick={() => router.push(`/SingleProductPage?id=${id}`)}
           className="object-contain w-full max-h-52 cursor-pointer"
           alt=""
           src={image}

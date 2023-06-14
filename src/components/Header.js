@@ -5,7 +5,9 @@ import { FaBars, FaSearch, FaUserCircle } from "react-icons/fa";
 import Slide from "react-reveal/Slide";
 import Fade from "react-reveal/Fade";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 export default function Header() {
+  const router = useRouter();
   const [active, setActive] = useState(false);
   const handleClick = () => {
     setActive(!active);
@@ -42,16 +44,16 @@ export default function Header() {
                 shop by department
               </h3>{" "}
               <div className="text-gray-600 text-sm flex flex-col gap-2">
-                <p class="sidebar_sub_items">Baby &amp; Kids</p>
-                <p class="sidebar_sub_items">Books</p>
-                <p class="sidebar_sub_items">Electronics</p>
-                <p class="sidebar_sub_items">Food Essentials</p>
-                <p class="sidebar_sub_items">Gaming</p>
-                <p class="sidebar_sub_items">Health &amp; Nutrition</p>
-                <p class="sidebar_sub_items">Home &amp; Furniture</p>
-                <p class="sidebar_sub_items">Men</p>
-                <p class="sidebar_sub_items">Music</p>
-                <p class="sidebar_sub_items">Sports</p>
+                <p className="sidebar_sub_items">Baby &amp; Kids</p>
+                <p className="sidebar_sub_items">Books</p>
+                <p className="sidebar_sub_items">Electronics</p>
+                <p className="sidebar_sub_items">Food Essentials</p>
+                <p className="sidebar_sub_items">Gaming</p>
+                <p className="sidebar_sub_items">Health &amp; Nutrition</p>
+                <p className="sidebar_sub_items">Home &amp; Furniture</p>
+                <p className="sidebar_sub_items">Men</p>
+                <p className="sidebar_sub_items">Music</p>
+                <p className="sidebar_sub_items">Sports</p>
               </div>
             </div>
 
@@ -107,7 +109,8 @@ export default function Header() {
         <div className="flex items-center bg-[#131921] p-1 flex-grow py-2">
           <div className="mt-2 flex items-center flex-grow sm:flex-grow-0">
             <Image
-              src="/AmazonWhite.svg"
+              onClick={() => router.push("/")}
+              src="/AmazonWhite.png"
               width={120}
               height={35}
               objectFit="contain"
@@ -129,7 +132,7 @@ export default function Header() {
           {/* right */}
           <div className="text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap">
             <div className="link group md:inline-block">
-              <p className="capitalize">"Hello, Sign In"</p>
+              <p className="capitalize">Hello, Sign In</p>
 
               <p className="font-extrabold md:text-sm">Account & Lists</p>
               {/* Hover Menu */}
@@ -139,7 +142,10 @@ export default function Header() {
                   <div className=" h-3 w-3 bg-white rotate-45 transform origin-bottom-left"></div>
                 </div>
                 <div className="w-full bg-white text-black rounded-md py-5 px-10">
-                  <button className="amazon_button flex justify-center px-10 mx-auto">
+                  <button
+                    onClick={() => router.push("/Signin")}
+                    className="amazon_button flex justify-center px-10 mx-auto"
+                  >
                     Sign In
                   </button>
 

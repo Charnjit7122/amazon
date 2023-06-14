@@ -41,7 +41,7 @@ export default function Register() {
           alt="Amazon Logo"
         />
 
-        <div className="bg-white p-8 rounded shadow-md w-96">
+        <div className="bg-white p-8 rounded shadow-2xl w-96">
           <h1 className="text-2xl font-semibold mb-4">Create account</h1>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>

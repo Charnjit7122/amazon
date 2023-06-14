@@ -10,12 +10,12 @@ function Banner() {
         infiniteLoop
         showStatus={false}
         showThumbs={false}
-        interval={5000}
+        interval={3000}
       >
         <div>
           <img
             loading="lazy"
-            src="https://m.media-amazon.com/images/I/61l3FByIn5L._SX3000_.jpg"
+            src="https://m.media-amazon.com/images/I/61qa3132IFL._SX3000_.jpg"
             alt="Banner-1"
           />
         </div>
@@ -31,6 +31,46 @@ function Banner() {
             loading="lazy"
             src="https://m.media-amazon.com/images/I/61bmNDUhXdL._SX3000_.jpg"
             alt="Banner-3"
+          />
+        </div>
+
+        <div>
+          <img
+            loading="lazy"
+            src="https://m.media-amazon.com/images/I/61DiesAUgCL._SX3000_.jpg"
+            alt="Banner-4"
+          />
+        </div>
+
+        <div>
+          <img
+            loading="lazy"
+            src="https://m.media-amazon.com/images/I/616gIBzuB2L._SX3000_.jpg"
+            alt="Banner-5"
+          />
+        </div>
+
+        <div>
+          <img
+            loading="lazy"
+            src="https://m.media-amazon.com/images/I/61CkKvh5LTL._SX3000_.jpg"
+            alt="Banner-6"
+          />
+        </div>
+
+        <div>
+          <img
+            loading="lazy"
+            src="https://m.media-amazon.com/images/I/81xSDWOf8TL._SX3000_.jpg"
+            alt="Banner-7"
+          />
+        </div>
+
+        <div>
+          <img
+            loading="lazy"
+            src="https://m.media-amazon.com/images/I/613QoALPiBL._SX3000_.jpg"
+            alt="Banner-8"
           />
         </div>
       </Carousel>

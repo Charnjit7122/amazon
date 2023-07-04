@@ -6,6 +6,8 @@ import UserSideTheme from "@/themes/usertheme/UserSideTheme";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -17,19 +19,37 @@ export default function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Add your login logic here
-    console.log("Login submitted:", email, password);
+    const isValid = validateForm();
+
+    if (isValid) {
+      // Add your login logic here
+      console.log("Login submitted:", email, password);
+    }
+  };
+
+  const validateForm = () => {
+    let valid = true;
+    setEmailError("");
+    setPasswordError("");
+
+    if (!email) {
+      setEmailError("Email is required");
+      valid = false;
+    }
+
+    if (!password) {
+      setPasswordError("Password is required");
+      valid = false;
+    }
+
+    return valid;
   };
 
   return (
     <UserSideTheme>
       <div className="flex flex-col items-center space-y-10 py-10 bg-gray-100 min-h-screen">
         <Image
-          src="/AmazonBlack.svg"
-          width={150}
-          height={40}
-          alt="Amazon Logo"
-        />
+          src="/AmazonBlack.svg" width={150} height={40} alt="Amazon Logo" />
 
         <div className="bg-white p-8 rounded shadow-2xl w-96">
           <h1 className="text-2xl font-semibold mb-4">Sign in</h1>
@@ -45,6 +65,7 @@ export default function Login() {
                 onChange={handleEmailChange}
                 className="border-gray-300 border rounded w-full px-3 py-2 mt-1 text-sm focus:outline-none focus:border-yellow-400 focus:ring-yellow-400 block w-full rounded-md sm:text-sm focus:ring-1"
               />
+              {emailError && <span className="text-red-500 text-sm">{emailError}</span>}
             </div>
             <div>
               <label htmlFor="password" className="text-sm font-medium">
@@ -57,6 +78,7 @@ export default function Login() {
                 onChange={handlePasswordChange}
                 className="border-gray-300 border rounded w-full px-3 py-2 mt-1 text-sm focus:outline-none focus:border-yellow-400 focus:ring-yellow-400 block w-full rounded-md sm:text-sm focus:ring-1"
               />
+              {passwordError && <span className="text-red-500 text-sm">{passwordError}</span>}
             </div>
 
             <button className="relative inline-flex items-center justify-start px-3 py-2 overflow-hidden font-medium transition-all bg-yellow-400 rounded hover:bg-white group w-full">
@@ -76,7 +98,7 @@ export default function Login() {
             </a>
           </div>
           <p className="text-xs mt-4">
-            By creating an account, you agree to Amazon's&nbsp;
+            By creating an account, you agree to Amazon&apos;s&nbsp;
             <a href="#" className="text-blue-500 text-xs">
               Conditions of Use
             </a>

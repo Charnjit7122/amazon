@@ -3,6 +3,7 @@ import ProductFeed from "@/components/ProductFeed";
 import UserSideTheme from "@/themes/usertheme/UserSideTheme";
 
 export default function Home({ products }) {
+  console.log(products);
   return (
     <UserSideTheme>
       <Banner />
@@ -12,7 +13,7 @@ export default function Home({ products }) {
 }
 
 export async function getServerSideProps() {
-  const products = await await fetch("https://fakestoreapi.com/products").then(
+  const products = await await fetch(`${process.env.HOST}/api/products`).then(
     (res) => res.json()
   );
   return {

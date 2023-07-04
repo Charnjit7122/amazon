@@ -40,12 +40,13 @@ export default function Checkout() {
                   Subtotal {items.length} Items:{" "}
                   <span className="font-bold">({total}.00)</span>
                 </h2>
-                <button
+                <a
                   role="link"
                   className={"amazon_button mt-2" }
+                  style={{textAlign:"center",cursor:"pointer"}}
                 >
-                  
-                </button>
+                  Proceed To Checkout
+                </a>
               </>
             )}
           </div>

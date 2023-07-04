@@ -2,10 +2,15 @@ import { useRouter } from "next/router";
 import { HiStar } from "react-icons/hi";
 import Currency from "react-currency-formatter";
 import UserSideTheme from "@/themes/usertheme/UserSideTheme";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../slices/cartSlice";
 
 function SingleProductPage({ product }) {
   const router = useRouter();
-  console.log(product.ratings.rating);
+  const dispatch = useDispatch();
+  const addProductToCart = () => {
+    dispatch(addToCart(product));
+  };
   return (
     <UserSideTheme>
       <div className="container mx-auto my-10 px-4">
@@ -36,7 +41,7 @@ function SingleProductPage({ product }) {
             <p className="text-lg font-bold mb-4">
               Price: <Currency quantity={product.price} currency="USD" />
             </p>
-            <button className="bg-blue-500 text-white py-2 px-4 rounded">
+            <button className="bg-blue-500 text-white py-2 px-4 rounded" onClick={addProductToCart}>
               Add to Cart
             </button>
           </div>

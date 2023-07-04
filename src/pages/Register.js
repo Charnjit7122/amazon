@@ -9,27 +9,75 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [repassword, setRePassword] = useState("");
 
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [repasswordError, setRePasswordError] = useState("");
+
   const handleNameChange = (event) => {
     setName(event.target.value);
+    setNameError(""); // Clear the error message
   };
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
+    setEmailError(""); // Clear the error message
   };
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+    setPasswordError(""); // Clear the error message
   };
 
   const handleRePasswordChange = (event) => {
     setRePassword(event.target.value);
+    setRePasswordError(""); // Clear the error message
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Add your registration logic here
-    console.log("Registration submitted:", name, email, password, repassword);
+
+    // Validate the input fields
+    let isValid = true;
+
+    if (name.trim() === "") {
+      setNameError("Please enter your name");
+      isValid = false;
+    }
+
+    if (email.trim() === "") {
+      setEmailError("Please enter your email");
+      isValid = false;
+    } else if (!isValidEmail(email)) {
+      setEmailError("Please enter a valid email");
+      isValid = false;
+    }
+
+    if (password.trim() === "") {
+      setPasswordError("Please enter a password");
+      isValid = false;
+    }
+
+    if (repassword.trim() === "") {
+      setRePasswordError("Please enter the password again");
+      isValid = false;
+    } else if (password !== repassword) {
+      setRePasswordError("Passwords do not match");
+      isValid = false;
+    }
+
+    if (isValid) {
+      // Add your registration logic here
+      console.log("Registration submitted:", name, email, password, repassword);
+    }
   };
+
+  const isValidEmail = (email) => {
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
 
   return (
     <UserSideTheme>
@@ -55,6 +103,7 @@ export default function Register() {
                 onChange={handleNameChange}
                 className="border-gray-300 border rounded w-full px-3 py-2 mt-1 text-sm focus:outline-none focus:border-yellow-400 focus:ring-yellow-400 block w-full rounded-md sm:text-sm focus:ring-1"
               />
+              {nameError && <span className="text-red-500 text-sm">{nameError}</span>}
             </div>
             <div>
               <label htmlFor="email" className="text-sm font-medium">
@@ -67,6 +116,7 @@ export default function Register() {
                 onChange={handleEmailChange}
                 className="border-gray-300 border rounded w-full px-3 py-2 mt-1 text-sm focus:outline-none focus:border-yellow-400 focus:ring-yellow-400 block w-full rounded-md sm:text-sm focus:ring-1"
               />
+              {emailError && <span className="text-red-500 text-sm">{emailError}</span>}
             </div>
             <div>
               <label htmlFor="password" className="text-sm font-medium">
@@ -79,6 +129,7 @@ export default function Register() {
                 onChange={handlePasswordChange}
                 className="border-gray-300 border rounded w-full px-3 py-2 mt-1 text-sm focus:outline-none focus:border-yellow-400 focus:ring-yellow-400 block w-full rounded-md sm:text-sm focus:ring-1 focus:transiton"
               />
+              {passwordError && <span className="text-red-500 text-sm">{passwordError}</span>}
             </div>
             <div>
               <label htmlFor="repassword" className="text-sm font-medium">
@@ -91,6 +142,7 @@ export default function Register() {
                 onChange={handleRePasswordChange}
                 className="border-gray-300 border rounded w-full px-3 py-2 mt-1 text-sm focus:outline-none focus:border-yellow-400 focus:ring-yellow-400 block w-full rounded-md sm:text-sm focus:ring-1"
               />
+              {repasswordError && <span className="text-red-500 text-sm">{repasswordError}</span>}
             </div>
 
             <button className="relative inline-flex items-center justify-start px-3 py-2 overflow-hidden font-medium transition-all bg-yellow-400 rounded hover:bg-white group w-full">
@@ -101,7 +153,7 @@ export default function Register() {
             </button>
           </form>
           <p className="text-xs mt-4">
-            By creating an account, you agree to Amazon's&nbsp;
+            By creating an account, you agree to Amazon&apos;s&nbsp;
             <a href="#" className="text-blue-500 text-xs">
               Conditions of Use
             </a>{" "}

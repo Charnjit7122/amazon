@@ -4,6 +4,8 @@ import { HiOutlineShoppingCart, HiX } from "react-icons/hi";
 import { FaBars, FaSearch, FaUserCircle } from "react-icons/fa";
 import Slide from "react-reveal/Slide";
 import Fade from "react-reveal/Fade";
+import Link from "next/link";
+
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 export default function Header() {
@@ -16,9 +18,8 @@ export default function Header() {
     <>
       {/* Side bar */}
       <div
-        className={`${
-          active ? "" : "hidden"
-        } fixed z-50 flex w-full h-full bg-black bg-opacity-70`}
+        className={`${active ? "" : "hidden"
+          } fixed z-50 flex w-full h-full bg-black bg-opacity-70`}
       >
         <Slide left>
           <div className="overflow-y-scroll scrollbar-hide bg-white w-full md:w-[365px] h-full">
@@ -142,12 +143,10 @@ export default function Header() {
                   <div className=" h-3 w-3 bg-white rotate-45 transform origin-bottom-left"></div>
                 </div>
                 <div className="w-full bg-white text-black rounded-md py-5 px-10">
-                  <button
-                    onClick={() => router.push("/Signin")}
-                    className="amazon_button flex justify-center px-10 mx-auto"
-                  >
-                    Sign In
-                  </button>
+
+                  <Link href="/Signin" className="w-40 text-center text-black mt-3 flex justify-center px-16 mx-auto py-2 overflow-hidden font-medium bg-yellow-400 rounded group">
+                    Sign in
+                  </Link>
 
                   <div className="mt-3 flex flex-wrap justify-around gap-x-5">
                     <div>
@@ -213,7 +212,14 @@ export default function Header() {
                         <p className="hover:underline hover:text-yellow-500">
                           Your Content and Devices
                         </p>
-                        <p>SignOut</p>
+
+                        <p>
+                          <button className="mt-3 relative inline-flex items-center justify-start px-8 py-2 overflow-hidden bg-yellow-400 rounded group ">
+                            <span className=" w-full text-center text-black">
+                              Sign out
+                            </span>
+                          </button>
+                        </p>
                       </div>
                     </div>
                   </div>

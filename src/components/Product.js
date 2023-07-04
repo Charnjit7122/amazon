@@ -1,8 +1,25 @@
 import { HiStar } from "react-icons/hi";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../slices/cartSlice";
 
 function Product({ id, title, price, description, category, image, rating }) {
   const router = useRouter();
+  const dispatch = useDispatch();
+  const addProductToCart = () => {
+    dispatch(
+      addToCart({
+        id: id,
+        image: image,
+        title: title,
+        category: category,
+        price: price,
+        ratings: rating,
+        description: description,
+      })
+    );
+  };
+
 
   return (
     <div className="relative flex flex-col m-5 bg-white z-30 p-10 shadow-2xl rounded">
@@ -34,7 +51,7 @@ function Product({ id, title, price, description, category, image, rating }) {
       <p className="text-xs my-2 line-clamp-2">{description}</p>
       <div className="mb-5">Price: ${price}</div>
 
-      <button className="mt-auto amazon_button">Add to cart</button>
+      <button className="mt-auto amazon_button"  onClick={ addProductToCart }>Add to cart</button>
     </div>
   );
 }

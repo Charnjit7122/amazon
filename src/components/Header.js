@@ -6,12 +6,24 @@ import Slide from "react-reveal/Slide";
 import Fade from "react-reveal/Fade";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { selectItems } from "../slices/cartSlice";
+
 export default function Header() {
+
   const router = useRouter();
+  
+  const items = useSelector(selectItems);
+  const [cartitemcount, seTCartItemCount] = useState()
   const [active, setActive] = useState(false);
   const handleClick = () => {
     setActive(!active);
   };
+ 
+useEffect(()=>{
+  seTCartItemCount(items.length)
+},[items])
+
   return (
     <>
       {/* Side bar */}
@@ -224,9 +236,11 @@ export default function Header() {
               <p>Returns</p>
               <p className="font-extrabold md:text-sm">& orders</p>
             </div>
-            <div className="link relative flex items-center cursor-pointer">
+            <div 
+            onClick={() => router.push("/Checkout")}
+            className="link relative flex items-center cursor-pointer">
               <span className="absolute top-0 right-0 md:right-7 h-4 w-4 bg-yellow-400 rounded-full text-center text-black font-bold">
-                4
+                {cartitemcount}
               </span>
               <HiOutlineShoppingCart className="h-10 w-10" />
               <p className="font-extrabold md:text-sm hidden md:inline mt-2">

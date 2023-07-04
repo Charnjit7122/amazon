@@ -1,6 +1,8 @@
 import "@/styles/globals.css";
 import Router from "next/router";
+import { Provider } from "react-redux";
 import ProgressBar from "@badrap/bar-of-progress";
+import { store } from "@/utils/store";
 
 const progress = new ProgressBar({
   size: 4,
@@ -13,6 +15,14 @@ Router.events.on("routeChangeStart", progress.start);
 Router.events.on("routeChangeComplete", progress.finish);
 Router.events.on("routeChangeError", progress.finish);
 
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />;
-}
+const MyApp = ({ Component, pageProps: { session, ...pageProps } }) => {
+  return (
+  
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
+     
+  );
+};
+
+export default MyApp;

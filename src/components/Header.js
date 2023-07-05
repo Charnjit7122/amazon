@@ -12,26 +12,37 @@ import { useSelector } from "react-redux";
 import { selectItems } from "../slices/cartSlice";
 
 export default function Header() {
-
   const router = useRouter();
-  
+
   const items = useSelector(selectItems);
-  const [cartitemcount, seTCartItemCount] = useState()
+  const [cartitemcount, seTCartItemCount] = useState();
   const [active, setActive] = useState(false);
   const handleClick = () => {
     setActive(!active);
   };
- 
-useEffect(()=>{
-  seTCartItemCount(items.length)
-},[items])
+
+  useEffect(() => {
+    seTCartItemCount(items.length);
+  }, [items]);
+
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    const fetchCategory = async () => {
+      const response = await fetch(`/api/category`);
+      const responseData = await response.json();
+      setCategories(responseData);
+    };
+    console.log(categories);
+    fetchCategory();
+  }, []);
 
   return (
     <>
       {/* Side bar */}
       <div
-        className={`${active ? "" : "hidden"
-          } fixed z-50 flex w-full h-full bg-black bg-opacity-70`}
+        className={`${
+          active ? "" : "hidden"
+        } fixed z-50 flex w-full h-full bg-black bg-opacity-70`}
       >
         <Slide left>
           <div className="overflow-y-scroll scrollbar-hide bg-white w-full md:w-[365px] h-full">
@@ -57,16 +68,15 @@ useEffect(()=>{
                 shop by department
               </h3>{" "}
               <div className="text-gray-600 text-sm flex flex-col gap-2">
-                <p className="sidebar_sub_items">Baby &amp; Kids</p>
-                <p className="sidebar_sub_items">Books</p>
-                <p className="sidebar_sub_items">Electronics</p>
-                <p className="sidebar_sub_items">Food Essentials</p>
-                <p className="sidebar_sub_items">Gaming</p>
-                <p className="sidebar_sub_items">Health &amp; Nutrition</p>
-                <p className="sidebar_sub_items">Home &amp; Furniture</p>
-                <p className="sidebar_sub_items">Men</p>
-                <p className="sidebar_sub_items">Music</p>
-                <p className="sidebar_sub_items">Sports</p>
+                {categories.map((category, index) => (
+                  <p
+                    key={index}
+                    className="sidebar_sub_items"
+                    onClick={() => router.push(`/Category/${category.name}`)}
+                  >
+                    {category.name}
+                  </p>
+                ))}
               </div>
             </div>
 
@@ -155,8 +165,10 @@ useEffect(()=>{
                   <div className=" h-3 w-3 bg-white rotate-45 transform origin-bottom-left"></div>
                 </div>
                 <div className="w-full bg-white text-black rounded-md py-5 px-10">
-
-                  <Link href="/Signin" className="w-40 text-center text-black mt-3 flex justify-center px-16 mx-auto py-2 overflow-hidden font-medium bg-yellow-400 rounded group">
+                  <Link
+                    href="/Signin"
+                    className="w-40 text-center text-black mt-3 flex justify-center px-16 mx-auto py-2 overflow-hidden font-medium bg-yellow-400 rounded group"
+                  >
                     Sign in
                   </Link>
 
@@ -242,9 +254,10 @@ useEffect(()=>{
               <p>Returns</p>
               <p className="font-extrabold md:text-sm">& orders</p>
             </div>
-            <div 
-            onClick={() => router.push("/Checkout")}
-            className="link relative flex items-center cursor-pointer">
+            <div
+              onClick={() => router.push("/Checkout")}
+              className="link relative flex items-center cursor-pointer"
+            >
               <span className="absolute top-0 right-0 md:right-7 h-4 w-4 bg-yellow-400 rounded-full text-center text-black font-bold">
                 {cartitemcount}
               </span>
@@ -261,7 +274,18 @@ useEffect(()=>{
             <FaBars className="h-6 mr-1" />
             All
           </p>
-          <p className="link">Prime Video</p>
+
+          {categories.map((category, index) => (
+            <p
+              key={index}
+              className="link"
+              onClick={() => router.push(`/Category/${category.name}`)}
+            >
+              {category.name}
+            </p>
+          ))}
+
+          {/* <p className="link">Prime Video</p>
           <p className="link">Amazon Business</p>
           <p className="link">Today&apos;s Deals</p>
           <p className="link hidden lg:inline-flex">Electronics</p>
@@ -269,7 +293,7 @@ useEffect(()=>{
           <p className="link hidden lg:inline-flex">Prime</p>
           <p className="link hidden lg:inline-flex">Buy Again</p>
           <p className="link hidden lg:inline-flex">Shopper Toolkit</p>
-          <p className="link hidden lg:inline-flex">Health & Persoal Care</p>
+          <p className="link hidden lg:inline-flex">Health & Persoal Care</p> */}
         </div>
       </div>
     </>

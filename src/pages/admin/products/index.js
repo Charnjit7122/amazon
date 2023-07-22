@@ -156,9 +156,6 @@ const Actions = ({ id }) => {
   return (
     <div>
       <span className="flex items-center space-x-1 sm:space-x-2 md:space-x-3">
-        <Link href={`/admin/products/${id}`}>
-          <AiTwotoneEdit className="w-6 h-6 text-blue-500 cursor-pointer" />
-        </Link>
         <AiFillDelete
           onClick={DeleteProduct}
           className="w-6 h-6 text-red-500 cursor-pointer"

@@ -9,7 +9,7 @@ import { AiTwotoneEdit, AiFillDelete } from "react-icons/ai";
 import Link from "next/link";
 
 export default function Products({ products, category }) {
- // const [dataUpdate, setDataupdate] = useRecoilState(DataUpdateState);
+  const [dataUpdate, setDataupdate] = useRecoilState(DataUpdateState);
   const [updatedData, setUpdatedData] = useState([]);
   const [addProductModal, setAddProductModal] =
     useRecoilState(AddProductModalState);

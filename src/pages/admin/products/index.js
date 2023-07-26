@@ -6,7 +6,6 @@ import AddProduct from "../../../utils/models/admin/AddProduct";
 import { DataUpdateState } from "../../../utils/models/admin/atoms/DataAtoms";
 import { AddProductModalState } from "../../../utils/models/admin/atoms/modalAtoms";
 import { AiTwotoneEdit, AiFillDelete } from "react-icons/ai";
-import Link from "next/link";
 
 export default function Products({ products, category }) {
   const [dataUpdate, setDataupdate] = useRecoilState(DataUpdateState);
@@ -93,7 +92,7 @@ export default function Products({ products, category }) {
   );
 }
 
-export async function getServerSideProps(contex) {
+export async function getServerSideProps() {
   const products = await fetch(`${process.env.HOST}/api/products`).then((res) =>
     res.json()
   );
@@ -112,7 +111,7 @@ export async function getServerSideProps(contex) {
 
 const Title = ({ image, title, id }) => {
   return (
-    <div className="flex items-center overflow-x-scroll scrollbar-hide  max-w-[90px] sm:max-w-xs md:w-auto">
+    <div className="scrollbar-hide flex items-center overflow-x-scroll   max-w-[90px] sm:max-w-xs md:w-auto">
       <img
         className="h-10 w-10 flex-none rounded-full hidden sm:inline-block"
         src={image}

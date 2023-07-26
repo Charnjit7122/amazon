@@ -4,6 +4,7 @@ import { RecoilRoot } from "recoil";
 import { Provider } from "react-redux";
 import ProgressBar from "@badrap/bar-of-progress";
 import { store } from "@/utils/store";
+import { SessionProvider } from "next-auth/react";
 
 const progress = new ProgressBar({
   size: 4,
@@ -18,11 +19,13 @@ Router.events.on("routeChangeError", progress.finish);
 
 const MyApp = ({ Component, pageProps: { session, ...pageProps } }) => {
   return (
-    <RecoilRoot>
+    <SessionProvider session={session}>
+      <RecoilRoot>
         <Provider store={store}>
           <Component {...pageProps} />
         </Provider>
-        </RecoilRoot>
+      </RecoilRoot>
+    </SessionProvider>
   );
 };
 

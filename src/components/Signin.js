@@ -17,7 +17,6 @@ export default function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Add your login logic here
-    console.log("Login submitted:", email, password);
   };
 
   return (
@@ -74,9 +73,7 @@ export default function Login() {
           <a href="#" className="text-blue-500 text-xs">
             Conditions of Use
           </a>
-          &nbsp;
-          and
-          &nbsp;
+          &nbsp; and &nbsp;
           <a href="#" className="text-blue-500 text-xs">
             Privacy Notice.
           </a>

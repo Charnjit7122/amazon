@@ -1,6 +1,20 @@
 import { useSortBy, useTable, useGlobalFilter } from "react-table";
 
 export default function DataTable({ columns, data }) {
+  const GlobalFilter = ({ filter, setFilter }) => {
+    return (
+      <div className="flex items-center justify-end p-3">
+        <input
+          type="search"
+          className="p-2 bg-gray-300 text-black rounded-md focus:outline-none"
+          value={filter || ""}
+          placeholder="Search"
+          onChange={(e) => setFilter(e.target.value)}
+        />
+      </div>
+    );
+  };
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -69,17 +83,3 @@ export default function DataTable({ columns, data }) {
     </div>
   );
 }
-
-const GlobalFilter = ({ filter, setFilter }) => {
-  return (
-    <div className="flex items-center justify-end p-3">
-      <input
-        type="search"
-        className="p-2 bg-gray-300 text-black rounded-md focus:outline-none"
-        value={filter || ""}
-        placeholder="Search"
-        onChange={(e) => setFilter(e.target.value)}
-      />
-    </div>
-  );
-};

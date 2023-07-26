@@ -2,13 +2,12 @@ import Banner from "@/components/Banner";
 import ProductFeed from "@/components/ProductFeed";
 import UserSideTheme from "@/themes/usertheme/UserSideTheme";
 
-
 export default function Home({ products }) {
-  console.log(products);
   return (
     <UserSideTheme products={products}>
-       <Banner />
-      <ProductFeed products={products} /> </UserSideTheme> 
+      <Banner />
+      <ProductFeed products={products} />{" "}
+    </UserSideTheme>
   );
 }
 

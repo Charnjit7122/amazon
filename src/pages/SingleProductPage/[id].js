@@ -24,7 +24,6 @@ function SingleProductPage({ product }) {
     dispatch(addToCart(product));
   };
 
-  console.log(product);
   return (
     <UserSideTheme>
       <div className="max-w-screen-2xl mx-auto">

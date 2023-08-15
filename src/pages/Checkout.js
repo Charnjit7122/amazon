@@ -2,16 +2,16 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 import { selectItems, totalCartPrice } from "./../slices/cartSlice";
 import CheckoutProduct from "./../components/CheckoutProduct";
-import UserSideTheme from "@/themes/usertheme/UserSideTheme";
-import { useSession, signOut, signIn } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
+import MainTheme from "./Theme/MainTheme";
+const stripePromise = loadStripe(`${process.env.stripe_public_key}`);
 
 export default function Checkout() {
-  const { data: session } = useSession();
   const items = useSelector(selectItems);
+  const { data: session } = useSession();
   const total = useSelector(totalCartPrice);
-  const stripePromise = loadStripe(`${process.env.stripe_public_key}`);
 
   const createCheckoutSession = async () => {
     const stripe = await stripePromise;
@@ -30,7 +30,7 @@ export default function Checkout() {
   };
 
   return (
-    <UserSideTheme>
+    <MainTheme>
       <div className="bg-gray-100">
         <div className="flex flex-wrap-reverse md:flex-nowrap max-w-screen-2xl mx-auto">
           {/* left */}
@@ -42,9 +42,9 @@ export default function Checkout() {
               height={250}
             />
             <div className="flex flex-col p-5 space-y-10 bg-white">
-              <p className="text-3xl border-b p-4">
-                {!items ? "Your Cart Is Empty." : "Your Cart"}
-              </p>
+              <h1 className="text-3xl border-b p-4">
+                {items.length === 0 ? "Your Cart Is Empty." : "Your Cart"}
+              </h1>
 
               {items.map((item, index) => (
                 <CheckoutProduct key={index} item={item} />
@@ -76,6 +76,6 @@ export default function Checkout() {
           </div>
         </div>
       </div>
-    </UserSideTheme>
+    </MainTheme>
   );
 }

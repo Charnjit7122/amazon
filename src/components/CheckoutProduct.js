@@ -32,11 +32,11 @@ export default function CheckoutProduct({ item }) {
       <div className="flex flex-col max-w-xl mx-5">
         <p className="text-sm md:text-base">{item.title}</p>
         <div className="flex">
-          {/* {Array(Math.round(item.ratings.rating))
+          {Array(Math.round(item.ratings.rating))
             .fill()
             .map((_, i) => (
               <HiStar key={i} className="h-5 w-5 text-yellow-500" />
-            ))} */}
+            ))}
         </div>
         <p className="text-xs my-2 line-clamp-3">{item.description}</p>
         <p className="text-sm">

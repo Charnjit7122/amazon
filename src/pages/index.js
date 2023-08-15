@@ -1,13 +1,11 @@
-import Banner from "@/components/Banner";
-import ProductFeed from "@/components/ProductFeed";
-import UserSideTheme from "@/themes/usertheme/UserSideTheme";
+import MainTheme from "./Theme/MainTheme";
+import HomePageContent from "./../components/HomePageContent";
 
 export default function Home({ products }) {
   return (
-    <UserSideTheme products={products}>
-      <Banner />
-      <ProductFeed products={products} />{" "}
-    </UserSideTheme>
+    <MainTheme>
+      <HomePageContent products={products} />
+    </MainTheme>
   );
 }
 

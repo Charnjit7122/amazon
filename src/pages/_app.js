@@ -1,10 +1,11 @@
-import "@/styles/globals.css";
-import Router from "next/router";
-import { RecoilRoot } from "recoil";
 import { Provider } from "react-redux";
-import ProgressBar from "@badrap/bar-of-progress";
-import { store } from "@/utils/store";
+import { store } from "../app/store";
+import "tailwindcss/tailwind.css";
+import "../styles/globals.css";
 import { SessionProvider } from "next-auth/react";
+import Router from "next/router";
+import ProgressBar from "@badrap/bar-of-progress";
+import { RecoilRoot } from "recoil";
 
 const progress = new ProgressBar({
   size: 4,

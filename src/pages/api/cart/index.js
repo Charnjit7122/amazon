@@ -3,14 +3,15 @@ import { connectToDatabase } from "../../../lib/mongodb/mongodbconnection";
 
 export default async function handler(req, res) {
   const { method, body } = req;
+
   const { db } = await connectToDatabase();
 
   if (method === "GET") {
     try {
       const products = await db
-        .collection("Products")
-        .find()
-        .sort({ timestamp: -1 })
+        .collection("Cart")
+        .find({ email: "session email" })
+        .sort()
         .toArray();
 
       res.status(200).json(products);
@@ -21,10 +22,10 @@ export default async function handler(req, res) {
 
   if (method === "POST") {
     try {
-      const product = await db
-        .collection("Products")
+      const cartitem = await db
+        .collection("Cart")
         .insertOne({ ...body, timestamp: new Timestamp() });
-      res.status(201).json(product);
+      res.status(201).json(cartitem);
     } catch (error) {
       res.status(500).json(error);
     }

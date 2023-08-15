@@ -1,18 +1,23 @@
 import { connectToDatabase } from "../../../lib/mongodb/mongodbconnection";
+import { ObjectId } from "mongodb";
 
 export default async function handler(req, res) {
-  const { method, body } = req;
+  const {
+    method,
+    body,
+    query: { id },
+  } = req;
+
   const { db } = await connectToDatabase();
 
   if (method === "GET") {
     try {
-      const category = await db
+      const product = await db
         .collection("Category")
-        .find()
-        .sort({ name: 1 })
+        .find(new ObjectId(id))
         .toArray();
 
-      res.status(200).json(category);
+      res.status(200).json(product);
     } catch (error) {
       res.status(500).json(error);
     }

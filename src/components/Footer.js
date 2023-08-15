@@ -1,5 +1,4 @@
 import Image from "next/image";
-
 export default function Footer() {
   return (
     <div className="bg-[#131921] text-white">
@@ -48,14 +47,16 @@ export default function Footer() {
       </div>
       <div className="flex items-center justify-center my-5">
         <Image
-          src="/AmazonWhite.png"
+          src="https://links.papareact.com/f90"
           width={76}
           height={23}
           objectFit="contain"
           className="cursor-pointer"
         />
       </div>
-      <div className="text-center pb-3 text-xs">Group 3 Amazon Clone</div>
+      <div className="text-center pb-3 text-xs">
+        © 2021 Ravi Rafaliya&trade;
+      </div>
     </div>
   );
 }

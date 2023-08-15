@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { RecoilRoot, useRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import AdminTheme from "../../../components/admin/AdminTheme";
 import DataTable from "../../../components/admin/DataTable";
-import AddProduct from "../../../utils/models/admin/AddProduct";
-import { DataUpdateState } from "../../../utils/models/admin/atoms/DataAtoms";
-import { AddProductModalState } from "../../../utils/models/admin/atoms/modalAtoms";
+import AddProduct from "../../../modals/AddProduct";
+import { DataUpdateState } from "../../../modals/atoms/DataAtoms";
+import { AddProductModalState } from "../../../modals/atoms/modalAtoms";
 import { AiTwotoneEdit, AiFillDelete } from "react-icons/ai";
+import Link from "next/link";
 
 export default function Products({ products, category }) {
   const [dataUpdate, setDataupdate] = useRecoilState(DataUpdateState);
@@ -92,7 +93,7 @@ export default function Products({ products, category }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(contex) {
   const products = await fetch(`${process.env.HOST}/api/products`).then((res) =>
     res.json()
   );
@@ -111,7 +112,7 @@ export async function getServerSideProps() {
 
 const Title = ({ image, title, id }) => {
   return (
-    <div className="scrollbar-hide flex items-center overflow-x-scroll   max-w-[90px] sm:max-w-xs md:w-auto">
+    <div className="flex items-center overflow-x-scroll scrollbar-hide  max-w-[90px] sm:max-w-xs md:w-auto">
       <img
         className="h-10 w-10 flex-none rounded-full hidden sm:inline-block"
         src={image}
@@ -155,6 +156,9 @@ const Actions = ({ id }) => {
   return (
     <div>
       <span className="flex items-center space-x-1 sm:space-x-2 md:space-x-3">
+        <Link href={`/admin/products/${id}`}>
+          <AiTwotoneEdit className="w-6 h-6 text-blue-500 cursor-pointer" />
+        </Link>
         <AiFillDelete
           onClick={DeleteProduct}
           className="w-6 h-6 text-red-500 cursor-pointer"

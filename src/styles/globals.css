@@ -35,6 +35,9 @@
   @apply text-xs text-red-500 mt-1;
 }
 
+.Modal {
+  @apply bg-white m-5 md:m-10 md:mx-auto  max-w-xl p-5 rounded-lg max-h-[90%] overflow-y-scroll scrollbar-hide;
+}
 * {
   user-select: none;
 }

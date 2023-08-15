@@ -1,12 +1,12 @@
+import MainTheme from "./../Theme/MainTheme";
+import SingleProduct from "./../../components/SingleProduct";
 import { useRouter } from "next/router";
-import UserSideTheme from "@/themes/usertheme/UserSideTheme";
-import clientPromise from "@/utils/db";
-import Product from "@/components/Product";
+import { connectToDatabase } from "../../lib/mongodb/mongodbconnection";
 
 export default function Category({ products }) {
   const router = useRouter();
   return (
-    <UserSideTheme>
+    <MainTheme>
       <div className="max-w-screen-2xl mx-auto">
         <div className="m-3">
           <p className="text-xs capitalize ml-3">
@@ -16,30 +16,21 @@ export default function Category({ products }) {
         </div>
         <div className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto min-h-screen">
           {products.map((product) => (
-            <Product
-              key={product._id}
-              id={product._id}
-              title={product.title}
-              price={product.price}
-              description={product.description}
-              category={product.category}
-              image={product.image}
-              rating={product.ratings.rating}
-            />
+            <SingleProduct product={product} key={product._id} />
           ))}
         </div>
       </div>
-    </UserSideTheme>
+    </MainTheme>
   );
 }
 
 export async function getServerSideProps({ query }) {
-  const client = await clientPromise;
-  const db = client.db();
-  const collection = db.collection("Products");
+  const { db } = await connectToDatabase();
 
-  const data = await collection.find({ category: query.category }).toArray();
-
+  const data = await db
+    .collection("Products")
+    .find({ category: query.category })
+    .toArray();
   const products = JSON.parse(JSON.stringify(data));
 
   return {

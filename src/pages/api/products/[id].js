@@ -1,5 +1,4 @@
-
-import connectToDatabase from "@/utils/db";
+import { connectToDatabase } from "../../../lib/mongodb/mongodbconnection";
 import { ObjectId } from "mongodb";
 
 export default async function handler(req, res) {

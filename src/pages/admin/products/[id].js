@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
 import AdminTheme from "../../../components/admin/AdminTheme";
-import { DataUpdateState } from "../../../utils/models/admin/atoms/DataAtoms";
+import { DataUpdateState } from "../../../modals/atoms/DataAtoms";
 
 export default function ProductDetail({ product, category }) {
   const [loading, setLoading] = useState(false);

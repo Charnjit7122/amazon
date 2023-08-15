@@ -19,34 +19,30 @@ export default function Header() {
   const { data: session } = useSession();
   const router = useRouter();
   const items = useSelector(selectItems);
+
   const [keyword, setKeyword] = useState("");
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [cartitemcount, seTCartItemCount] = useState();
-
   useEffect(() => {
     const fetchCategory = async () => {
       const response = await fetch(`/api/category`);
       const responseData = await response.json();
       setCategories(responseData);
     };
+    console.log(categories);
     fetchCategory();
   }, []);
-
-  const SearchProducts = products.filter(
-    (item) =>
-      item.title.toLowerCase().includes(keyword) ||
-      item.category.toLowerCase().includes(keyword)
-  );
 
   const onInputeChange = (event) => {
     event.preventDefault();
     setKeyword(event.target.value.toLowerCase());
   };
 
-  useEffect(() => {
-    seTCartItemCount(items.length);
-  }, [items]);
+  const SearchProducts = products.filter(
+    (item) =>
+      item.title.toLowerCase().includes(keyword) ||
+      item.category.toLowerCase().includes(keyword)
+  );
 
   return (
     <>
@@ -59,7 +55,7 @@ export default function Header() {
         <Slide left>
           <div className="overflow-y-scroll scrollbar-hide bg-white w-full md:w-[365px] h-full">
             <div
-              onClick={() => (!session ? signIn() : "")}
+              onClick={() => (!session ? () => signIn() : "")}
               className="bg-[#232f3e] flex items-center text-white text-xl font-bold space-x-2 capitalize py-2 px-7 sticky top-0 cursor-pointer"
             >
               {session ? (
@@ -136,10 +132,19 @@ export default function Header() {
                 help & settings{" "}
               </h3>{" "}
               <div className="text-gray-600 text-sm flex flex-col gap-2">
-                <p className="sidebar_sub_items">Your Account</p>
+                <p
+                  onClick={() =>
+                    !session ? router.push("/auth/signin") : router.push("/me")
+                  }
+                  className="sidebar_sub_items"
+                >
+                  Your Account
+                </p>
                 <p className="sidebar_sub_items">Customer Service</p>
                 <p
-                  onClick={() => (!session ? signIn() : signOut())}
+                  onClick={() =>
+                    !session ? router.push("/auth/signin") : signOut()
+                  }
                   className="sidebar_sub_items"
                 >
                   {!session ? "Sign In" : "Logout"}
@@ -162,10 +167,10 @@ export default function Header() {
             <Image
               onClick={() => router.push("/")}
               src="/AmazonWhite.png"
-              width={130}
+              width={150}
               height={40}
               objectFit="contain"
-              className="cursor-pointer mx-3 mt-2"
+              className="cursor-pointer"
             />
           </div>
 
@@ -255,11 +260,25 @@ export default function Header() {
                       </div>
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg mb-2.5 border-gray-300 border-b">
+                      <h3
+                        onClick={() =>
+                          !session
+                            ? router.push("/auth/signin")
+                            : router.push("/me")
+                        }
+                        className="font-bold text-lg mb-2.5 border-gray-300 border-b"
+                      >
                         Your Account
                       </h3>
                       <div className="text-sm flex flex-col gap-y-1">
-                        <p className="hover:underline hover:text-yellow-500">
+                        <p
+                          onClick={() =>
+                            !session
+                              ? router.push("/auth/signin")
+                              : router.push("/me")
+                          }
+                          className="hover:underline hover:text-yellow-500"
+                        >
                           Your Account{" "}
                         </p>
                         <p
@@ -323,7 +342,7 @@ export default function Header() {
               className="link relative flex items-center cursor-pointer"
             >
               <span className="absolute top-0 right-0 md:right-7 h-4 w-4 bg-yellow-400 rounded-full text-center text-black font-bold">
-                {cartitemcount}
+                {items.length}
               </span>
               <HiOutlineShoppingCart className="h-10 w-10" />
               <p className="font-extrabold md:text-sm hidden md:inline mt-2">

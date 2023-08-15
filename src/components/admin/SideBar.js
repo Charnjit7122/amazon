@@ -19,6 +19,14 @@ export default function AdminSideBar() {
         <MdCategory className="w-6 h-6" />
         <p className=" font-semibold">Products</p>
       </div>
+      <div className="adminsidebarlink">
+        <FaUsers className="w-6 h-6" />
+        <p className=" font-semibold">Users</p>
+      </div>
+      <div className="adminsidebarlink">
+        <MdPayment className="w-6 h-6" />
+        <p className=" font-semibold">Payments</p>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import clientPromise from "@/utils/db";
+import clientPromise from "../../../utils/db";
 import { ObjectId } from "mongodb";
 
 export default async function handler(req, res) {

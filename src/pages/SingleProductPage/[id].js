@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
 import { HiStar } from "react-icons/hi";
-import UserSideTheme from "@/themes/usertheme/UserSideTheme";
 import Countdown from "react-countdown";
 import moment from "moment";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../slices/cartSlice";
+import MainTheme from "../Theme/MainTheme";
 
 function SingleProductPage({ product }) {
   const rndInt = Math.floor(Math.random() * 10) + 1;
@@ -25,7 +25,7 @@ function SingleProductPage({ product }) {
   };
 
   return (
-    <UserSideTheme>
+    <MainTheme>
       <div className="max-w-screen-2xl mx-auto">
         <div className="m-3">
           <p className="text-xs capitalize">
@@ -140,7 +140,7 @@ function SingleProductPage({ product }) {
           </div>
         </div>
       </div>
-    </UserSideTheme>
+    </MainTheme>
   );
 }
 

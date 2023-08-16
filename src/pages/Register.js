@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import UserSideTheme from "@/themes/usertheme/UserSideTheme";
+import MainTheme from "./Theme/MainTheme";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -79,7 +79,7 @@ export default function Register() {
   };
 
   return (
-    <UserSideTheme>
+    <MainTheme>
       <div className="flex flex-col items-center space-y-10 py-10 bg-gray-100 min-h-screen">
         <Image
           src="/AmazonBlack.svg"
@@ -201,6 +201,6 @@ export default function Register() {
           © 1996-{new Date().getFullYear()} Amazon.com, Inc. or its affiliates
         </footer>
       </div>
-    </UserSideTheme>
+    </MainTheme>
   );
 }

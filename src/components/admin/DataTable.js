@@ -24,24 +24,23 @@ export default function DataTable({ columns, data }) {
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
       <table {...getTableProps()} className="w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <>
-                  <th
-                    {...column.getHeaderProps(column.getSortByToggleProps())}
-                    className="py-3 px-1 md:px- text-left font-semibold bg-yellow-200  uppercase tracking-wider"
-                  >
-                    {column.render("Header")}
-                    <span>
-                      {column.isSorted
-                        ? column.isSortedDesc
-                          ? " 🔽"
-                          : " 🔼"
-                        : ""}
-                    </span>
-                  </th>
-                </>
+          {headerGroups.map((headerGroup, index) => (
+            <tr key={index} {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column, index) => (
+                <th
+                  key={index}
+                  {...column.getHeaderProps(column.getSortByToggleProps())}
+                  className="py-3 px-1 md:px- text-left font-semibold bg-yellow-200  uppercase tracking-wider"
+                >
+                  {column.render("Header")}
+                  <span>
+                    {column.isSorted
+                      ? column.isSortedDesc
+                        ? " 🔽"
+                        : " 🔼"
+                      : ""}
+                  </span>
+                </th>
               ))}
             </tr>
           ))}
@@ -54,9 +53,9 @@ export default function DataTable({ columns, data }) {
             prepareRow(row);
             return (
               <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
+                {row.cells.map((cell, i) => {
                   return (
-                    <td {...cell.getCellProps()} className="py-4">
+                    <td key={i} {...cell.getCellProps()} className="py-4">
                       {cell.render("Cell")}
                     </td>
                   );

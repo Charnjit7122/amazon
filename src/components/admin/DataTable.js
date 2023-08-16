@@ -52,7 +52,7 @@ export default function DataTable({ columns, data }) {
           {rows.map((row, i) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
+              <tr key={i} {...row.getRowProps()}>
                 {row.cells.map((cell, i) => {
                   return (
                     <td key={i} {...cell.getCellProps()} className="py-4">

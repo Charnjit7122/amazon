@@ -172,11 +172,11 @@ export default function ProductDetail({ product, category }) {
 
 export async function getServerSideProps({ params }) {
   const productdata = await fetch(
-    `${process.env.HOST}/api/products/${params.id}`
+    `${process.env.NEXT_PUBLIC_HOST}/api/products/${params.id}`
   ).then((res) => res.json());
-  const category = await fetch(`${process.env.HOST}/api/category`).then((res) =>
-    res.json()
-  );
+  const category = await fetch(
+    `${process.env.NEXT_PUBLIC_HOST}/api/category`
+  ).then((res) => res.json());
   return {
     props: {
       product: productdata[0],

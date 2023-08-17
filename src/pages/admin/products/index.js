@@ -94,13 +94,13 @@ export default function Products({ products, category }) {
 }
 
 export async function getServerSideProps(contex) {
-  const products = await fetch(`${process.env.HOST}/api/products`).then((res) =>
-    res.json()
-  );
+  const products = await fetch(
+    `${process.env.NEXT_PUBLIC_HOST}/api/products`
+  ).then((res) => res.json());
 
-  const category = await fetch(`${process.env.HOST}/api/category`).then((res) =>
-    res.json()
-  );
+  const category = await fetch(
+    `${process.env.NEXT_PUBLIC_HOST}/api/category`
+  ).then((res) => res.json());
 
   return {
     props: {

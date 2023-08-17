@@ -1,4 +1,4 @@
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const stripe = require("stripe")(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
 export default async (req, res) => {
   const { items, email } = req.body;
 
@@ -22,8 +22,8 @@ export default async (req, res) => {
     },
     mode: "payment",
     line_items: transformedItems,
-    success_url: `${process.env.HOST}/success`,
-    cancel_url: `${process.env.HOST}/checkout`,
+    success_url: `${process.env.NEXT_PUBLIC_HOST}/success`,
+    cancel_url: `${process.env.NEXT_PUBLIC_HOST}/checkout`,
     metadata: {
       email,
       images: JSON.stringify(items.map((item) => item.image)),

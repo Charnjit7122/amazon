@@ -10,9 +10,9 @@ export default function Home({ products }) {
 }
 
 export async function getServerSideProps() {
-  const products = await await fetch(`${process.env.HOST}/api/products`).then(
-    (res) => res.json()
-  );
+  const products = await await fetch(
+    `${process.env.NEXT_PUBLIC_HOST}/api/products`
+  ).then((res) => res.json());
   return {
     props: { products },
   };

@@ -148,7 +148,7 @@ export default SingleProductPage;
 
 export async function getServerSideProps({ params }) {
   const product = await fetch(
-    `${process.env.HOST}/api/products/FindSingleProduct?id=${params.id}`
+    `${process.env.NEXT_PUBLIC_HOST}/api/products/FindSingleProduct?id=${params.id}`
   ).then((res) => res.json());
 
   return {
